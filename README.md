@@ -1,68 +1,67 @@
-# Projeto de Desenvolvimento Integrado de Software - FleetVision
-## Grupo 3 - 2024/25
+# Integrated Software Development Project - FleetVision
+## Group 3 - 2024/25
 
-## Introdução
-Este projeto é desenvolvido no âmbito da unidade curricular de Desenvolvimento Integrado de Software do curso de Licenciatura em Engenharia de Tecnologias da Informação (LETI) na Universidade do Minho. O objetivo é aplicar os conhecimentos adquiridos ao longo da disciplina no desenvolvimento de uma solução tecnológica que atenda a uma necessidade real.
+## Introduction
+This project is developed within the scope of the Integrated Software Development curricular unit of the Telecommunications and Informatics Engineering (LETI) Bachelor's degree at the University of Minho. The objective is to apply the knowledge acquired throughout the course in the development of a technological solution that meets a real need.
 
-O projeto é realizado em parceria com os Transportes Urbanos de Braga (TUB), empresa responsável pelo transporte público da cidade. Atualmente, um dos desafios enfrentados pelos TUB é a falta de dados precisos sobre a lotação das paragens, dificultando a tomada de decisões para otimizar a operação da frota. Sem essas  informações, torna-se mais complexo ajustar a oferta de autocarros à procura real, o que pode resultar em superlotação ou desperdício de recursos.
+The project is carried out in partnership with Transportes Urbanos de Braga (TUB), the company responsible for public transport in the city. Currently, one of the challenges faced by TUB is the lack of accurate data on the capacity of the stops, making it difficult to make decisions to optimize the fleet's operation. Without this information, it becomes more complex to adjust bus supply to real demand, which can result in overcrowding or wasted resources.
 
-Para resolver este problema, o sistema desenvolvido permitirá a análise automatizada da ocupação das paragens a partir de câmaras CCTV instaladas nos pontos de espera. Através do processamento de imagens em tempo real, será possível estimar o número de passageiros presentes em cada paragem e fornecer dados estatísticos detalhados para os TUB. Com estas informações, a empresa poderá tomar decisões mais
-informadas sobre a gestão da frota, melhorando a eficiência do serviço e garantindo um transporte mais adequado às necessidades da cidade.
+To solve this problem, the developed system will allow the automated analysis of stop occupation from CCTV cameras installed at waiting points. Through real-time image processing, it will be possible to estimate the number of passengers present at each stop and provide detailed statistical data to TUB. With this information, the company will be able to make more informed decisions about fleet management, improving service efficiency and ensuring transport that is more appropriate to the city's needs.
 
-## Estrutura do Repositório
+## Repository Structure
 
-O repositório está organizado em múltiplos diretórios, cada um responsável por uma componente do sistema:
+The repository is organized into multiple directories, each responsible for a component of the system:
 
 ### [`camara-niop`](camara-niop/README.md)
 
-Projeto desenvolvido na plataforma low-code NIOP. Responsável pela captura de imagens das câmaras instaladas nas paragens, integração com a interface gráfica (HMI) e envio dos dados de contagem para o backend via WebSocket. A configuração é feita através do ficheiro `info.json`.
+Project developed on the NIOP low-code platform. Responsible for capturing images from the cameras installed at the stops, integration with the graphical interface (HMI), and sending the count data to the backend via WebSocket. The configuration is done through the `info.json` file.
 
 ### [`camara-py`](camara-py/README.md)
 
-Implementação em Python para captura de imagens da webcam, deteção de pessoas utilizando o modelo YOLOv5 (Ultralytics), contagem de passageiros e geração de estatísticas. Utiliza as bibliotecas OpenCV, Ultralytics e NumPy. O código é modular, facilitando adaptações futuras.
+Python implementation for capturing images from the webcam, detecting people using the YOLOv5 (Ultralytics) model, counting passengers, and generating statistics. Uses the OpenCV, Ultralytics, and NumPy libraries. The code is modular, facilitating future adaptations.
 
 ### [`server-py`](server-py/README.md)
 
-Backend desenvolvido em Python com FastAPI, responsável por receber os dados das câmaras, gerir a base de dados MySQL e disponibilizar uma API RESTful para consulta e gestão dos dados (câmaras, paragens, alertas, relatórios). Inclui endpoints para todas as operações principais e documentação automática via OpenAPI.
+Backend developed in Python with FastAPI, responsible for receiving data from cameras, managing the MySQL database, and providing a RESTful API for querying and managing data (cameras, stops, alerts, reports). Includes endpoints for all main operations and automatic documentation via OpenAPI.
 
 ### [`html-pages`](html-pages/README.md)
 
-Conjunto de páginas PHP organizadas em subdiretórios para gestão do sistema via interface web. Inclui páginas para gestão de alertas, câmaras, paragens, relatórios e recursos estáticos (CSS). Deve ser colocado na pasta `htdocs` do XAMPP ou servidor web equivalente.
+A set of PHP pages organized into subdirectories for system management via a web interface. Includes pages for managing alerts, cameras, stops, reports, and static resources (CSS). Must be placed in the `htdocs` folder of XAMPP or an equivalent web server.
 
 ### [`sistema-niop`](sistema-niop/README.md)
 
-Projeto principal desenvolvido em NIOP, integrando todas as funcionalidades do sistema numa aplicação gráfica (HMI). Permite visualizar e gerir câmaras, paragens, alertas e relatórios, comunicando com o backend e apresentando os dados recolhidos.
+Main project developed in NIOP, integrating all system functionalities into a graphical application (HMI). Allows viewing and managing cameras, stops, alerts, and reports, communicating with the backend and analyzing the collected data.
 
 ### [`scriptDB.sql`](scriptDB.sql)
 
-Script SQL para criação da base de dados MySQL necessária para o funcionamento do sistema. Contém as definições das tabelas, views e procedimentos armazenados utilizados pelo backend.
+SQL script for creating the MySQL database necessary for the system to function. Contains the definitions of the tables, views, and stored procedures used by the backend.
 
-## Instalação e Execução
+## Installation and Execution
 
-### Requisitos Gerais
+### General Requirements
 
-- **niop Studio & HMI** (para componentes NIOP)
-- **Python 3.8+** (para backend e camara-py)
-- **MySQL Server** (base de dados)
-- **XAMPP/Apache/Nginx** (para servir as páginas PHP)
-- **Bibliotecas Python**: `fastapi`, `uvicorn`, `mysql-connector-python`, `opencv-python`, `ultralytics`, `numpy`
+- **niop Studio & HMI** (for NIOP components)
+- **Python 3.8+** (for backend and camara-py)
+- **MySQL Server** (database)
+- **XAMPP/Apache/Nginx** (to serve PHP pages)
+- **Python Libraries**: `fastapi`, `uvicorn`, `mysql-connector-python`, `opencv-python`, `ultralytics`, `numpy`
 
-### Passos Gerais
+### General Steps
 
-1. **Base de Dados**: Execute o script [`scriptDB.sql`](scriptDB.sql) para criar as tabelas e views necessárias.
-2. **Backend**: Configure e execute o servidor FastAPI em [`server-py`](server-py/README.md).
-3. **Câmaras**: Configure e execute os projetos [`camara-niop`](camara-niop/README.md) e/ou [`camara-py`](camara-py/README.md) conforme necessário.
-4. **Interface Web**: Copie o conteúdo de [`html-pages`](html-pages/README.md) para a pasta `htdocs` do XAMPP ou servidor web.
-5. **Sistema NIOP**: Abra e execute o projeto em [`sistema-niop`](sistema-niop/README.md) através do niop Studio/HMI.
+1. **Database**: Run the [`scriptDB.sql`](scriptDB.sql) script to create the necessary tables and views.
+2. **Backend**: Configure and run the FastAPI server in [`server-py`](server-py/README.md).
+3. **Cameras**: Configure and run the [`camara-niop`](camara-niop/README.md) and/or [`camara-py`](camara-py/README.md) projects as needed.
+4. **Web Interface**: Copy the contents of [`html-pages`](html-pages/README.md) to the `htdocs` folder of XAMPP or web server.
+5. **NIOP System**: Open and run the project in [`sistema-niop`](sistema-niop/README.md) through niop Studio/HMI.
 
-## Funcionalidades Principais
+## Main Features
 
-- **Contagem automática de passageiros em paragens**
-- **Gestão de câmaras, paragens e alertas**
-- **Relatórios estatísticos (lotação média, pico, fluxo, taxa de alertas)**
-- **Interface gráfica intuitiva (web e HMI)**
-- **API RESTful documentada para integração com outros sistemas**
+- **Automatic passenger counting at stops**
+- **Management of cameras, stops, and alerts**
+- **Statistical reports (average capacity, peak, flow, alert rate)**
+- **Intuitive graphical interface (web and HMI)**
+- **Documented RESTful API for integration with other systems**
 
-## Licença
+## License
 
-MIT License. Veja o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.

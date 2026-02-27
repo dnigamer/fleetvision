@@ -1,29 +1,29 @@
-# Projeto de Desenvolvimento Integrado de Software - Câmara NIOP
-## Grupo 3 - 2024/25
+# Integrated Software Development Project - NIOP Camera
+## Group 3 - 2024/25
 
-## Introdução
+## Introduction
 
-O projeto consiste na implementação de um sistema de deteção de pessoas em imagens, utilizando técnicas de visão computacional e machine learning para contar o número de pessoas presentes numa determinada paragem de autocarro. A partir ou de imagens ou de uma stream de webcam, o sistema deve ser capaz de identificar e contar o número de pessoas presentes na imagem ou stream.
+The project consists of implementing a system for detecting people in images, using computer vision and machine learning techniques to count the number of people present at a given bus stop. From either images or a webcam stream, the system must be able to identify and count the number of people present in the image or stream.
 
-A utilização deste sistema será feita por parte de um operador de transportes públicos, que poderá utilizar a informação obtida para otimizar a gestão de recursos e melhorar a eficiência do serviço prestado.
+The use of this system will be done by a public transport operator, who will be able to use the information obtained to optimize resource management and improve the efficiency of the service provided.
 
-Esta parte do projeto feito na plataforma de low-code NIOP tem o objetivo de criar uma aplicação de captura e processamento de imagens capturadas por uma câmera instalada numa paragem de autocarro para contabilização de passageiros. Este projeto integra-se par a par com o projeto camara-py que é responsável por processar uma imagem ou stream de vídeo e contar o número de passageiros que existam na imagem. 
+This part of the project done on the NIOP low-code platform aims to create an application for capturing and processing images captured by a camera installed at a bus stop to count passengers. This project integrates side-by-side with the camara-py project, which is responsible for processing an image or video stream and counting the number of passengers in the image.
 
-O projeto aqui feito em NIOP serve principalmente para receber essas informações e enviar para um servidor utilizando WebSocket.
+The project done here in NIOP serves mainly to receive this information and send it to a server using WebSocket.
 
-## Instalação
+## Installation
 
-Devido ao facto de o projeto ter sido desenvolvido utilizando a plataforma NIOP, é somente necessário fazer o download do projeto e abrir o mesmo na plataforma NIOP. Para tal, é necessário ter o NIOP studio instalado no seu sistema e ter um conhecimento básico de como utilizar a plataforma NIOP. Tanto como o NIOP studio, é necessário ter o NIOP HMI instalado no seu sistema. O NIOP HMI é a plataforma que permite executar as GUI criadas na plataforma NIOP.
+Due to the fact that the project was developed using the NIOP platform, it is only necessary to download the project and open it on the NIOP platform. To do this, you must have NIOP studio installed on your system and have a basic understanding of how to use the NIOP platform. As well as NIOP studio, it is necessary to have NIOP HMI installed on your system. NIOP HMI is the platform that allows you to run GUIs created on the NIOP platform.
 
-Como a plataforma NIOP funciona de forma cliente-servidor para executar o projeto, é necessário ter o servidor NIOP a correr para poder executar o projeto. Para tal, é necessário iniciar o servidor NIOP (niop Engine) e depois abrir o projeto na plataforma NIOP. Assim, ao executar o seguinte comando no terminal, o servidor NIOP irá iniciar:
+Since the NIOP platform works in a client-server way to run the project, it is necessary to have the NIOP server running to be able to execute the project. To do this, it is necessary to start the NIOP server (niop Engine) and then open the project on the NIOP platform. Thus, by running the following command in the terminal, the NIOP server will start:
 ```bash
 & "C:\Program Files\Neadvance\niop Engine\niopEngine.exe" 0.0.0.0 8091 2
 ```
-Após o servidor NIOP estar a correr, é possível abrir o projeto na plataforma NIOP, clicar em publicar, depois clicar em publicar workflow e de seguida clicar em publicar. Após isso, o projeto irá correr e estará disponível para ser utilizado.
+After the NIOP server is running, you can open the project on the NIOP platform, click publish, then click publish workflow and then click publish. After that, the project will run and will be available to be used.
 
-## Execução
+## Execution
 
-Como o projeto foi concebido para ser "standalone", somente é necessário configurar algumas variáveis num ficheiro de configuração. Para tal, é necessário abrir o ficheiro `info.json` e configurar as variáveis de acordo com o seu sistema. As variáveis que devem ser configuradas são as seguintes:
+Because the project was designed to be "standalone", it is only necessary to configure some variables in a configuration file. To do this, you need to open the `info.json` file and configure the variables according to your system. The variables that should be configured are the following:
 ```json
 {
     "identificador": 5,
@@ -31,72 +31,72 @@ Como o projeto foi concebido para ser "standalone", somente é necessário confi
     "tempo_captura": 10
 }
 ```
-As variáveis que devem ser configuradas são as seguintes:
-- `identificador`: O identificador da câmera. O valor padrão é um número gerado aleatoriamente. Este número é utilizado para identificar a câmera na aplicação. Se o número não for único em relação a uma outra câmara no sistema, o projeto terá problemas na backend que processa as contabilizações de passageiros.
-- `server_ip`: O endereço IP do servidor que irá receber as informações. Este endereço IP deve ser o endereço do servidor de backend que irá receber as informações enviadas pela aplicação, como dados de lotação de paragens, entre outros. O valor padrão é `https://backend.dnigamer.xyz`, e deve ser alterado para o endereço do seu servidor. 
-- `tempo_captura`: O período de tempo em segundos que a câmera irá capturar a imagem. Este número significa quanto em quanto tempo a câmera irá capturar uma nova imagem. O valor padrão é 10 segundos, mas pode ser alterado para o valor que quiser. O valor mínimo é 1 segundo.
+The variables that must be configured are the following:
+- `identificador`: The camera identifier. The default value is a randomly generated number. This number is used to identify the camera in the application. If the number is not unique in relation to another camera in the system, the project will have problems in the backend that processes the passenger counts.
+- `server_ip`: The IP address of the server that will receive the information. This IP address must be the address of the backend server that will receive the information sent by the application, such as stop capacity data, among others. The default value is `https://backend.dnigamer.xyz`, and should be changed to the address of your server.
+- `tempo_captura`: The period of time in seconds that the camera will capture the image. This number means how often the camera will capture a new image. The default value is 10 seconds, but it can be changed to whatever value you want. The minimum value is 1 second.
 
-**NOTA:** O endereço IP (`server_ip`) deve ser o endereço do servidor que está a correr o backend `server-py`, um servidor RESTful que recebe as informações enviadas pela aplicação.
+**NOTE:** The IP address (`server_ip`) must be the address of the server running the `server-py` backend, a RESTful server that receives the information sent by the application.
 
-### GUI integrado do camara-niop
-Como nova versão do projeto, foi adicionado uma GUI integrada no projeto camara-niop. Esta GUI permite ao utilizador ver o estado da captura, a imagem capturada e o número de pessoas detetadas na imagem. A GUI é atualizada em tempo real e permite ao utilizador ver o estado da captura e o número de pessoas detetadas na imagem.
+### Integrated camara-niop GUI
+As a new version of the project, a GUI integrated into the camara-niop project was added. This GUI allows the user to see the capture status, the captured image, and the number of people detected in the image. The GUI is updated in real-time and allows the user to see the capture status and the number of people detected in the image.
 
 ![camara-niop](assets/gui-camara.png)
 
-#### Como analizar a GUI
-A GUI é dividida em várias secções, a da imagem capturada, a das informações da captura e estado da captura. 
+#### How to analyze the GUI
+The GUI is divided into several sections, the captured image section, the capture information section, and the capture status section.
 
-A secção da imagem capturada mostra a imagem capturada pela câmera, a secção das informações da captura mostra o número de pessoas detetadas na imagem, tal como o ID da câmera e a data e hora da última captura. 
+The captured image section shows the image captured by the camera, the capture information section shows the number of people detected in the image, as well as the camera ID and the date and time of the last capture.
 
-A secção do estado da captura mostra o tempo que demorou a capturar a imagem e o intervalo de tempo entre capturas.
+The capture status section shows the time it took to capture the image and the time interval between captures.
 
-## Explicação do projeto
+## Project Explanation
 
-Devido ao facto que o projeto é "low-code/no-code", não é possível explicar o projeto a partir de linhas de código.
+Due to the fact that the project is "low-code/no-code", it is not possible to explain the project from lines of code.
 
-Assim, o projeto é dividido em várias partes que são explicadas de seguida:
+Thus, the project is divided into several parts that are explained below:
 ![camara-niop](assets/projeto.png)
 
-### Legenda
-#### 1. Verificações iniciais
+### Legend
+#### 1. Initial Checks
 
-Nesta secção do programa, o algoritmo irá verificar se existe tanto o ficheiro `info.json` como o HMI para poder mostrar a GUI do programa. Se não existir o ficheiro `info.json`, o algoritmo irá automaticamente criar o ficheiro com os valores padrão. 
+In this section of the program, the algorithm will check if both the `info.json` file and the HMI exist to be able to show the program GUI. If the `info.json` file does not exist, the algorithm will automatically create the file with the default values.
 
-Se não existir o HMI, o algoritmo irá continuar a execução do programa sem mostrar a GUI, mas irá continuar a funcionar em background.
+If the HMI does not exist, the algorithm will continue running the program without showing the GUI, but will continue to work in the background.
 
-#### 2. Criação de variáveis e do ficheiro info.json
+#### 2. Creation of variables and the info.json file
 
-Neste passo, o projeto irá obter as configurações do ficheiro `info.json` e irá guardar as variáveis em variáveis que serão utilizadas no projeto. 
+In this step, the project will get the settings from the `info.json` file and will save the variables in variables that will be used in the project.
 
-Se o ficheiro `info.json` não existir ou não estiver configurado corretamente, o projeto irá falhar e não irá funcionar. Assim, é necessário ter o ficheiro `info.json` configurado corretamente para que o projeto funcione. 
+If the `info.json` file does not exist or is not configured correctly, the project will fail and will not work. Thus, it is necessary to have the `info.json` file correctly configured for the project to work.
 
-Como forma de prevenir erros, a aplicação irá automaticamente introduzir alguns valores padrão caso o ficheiro `info.json` esteja vazio.
+As a way to prevent errors, the application will automatically enter some default values if the `info.json` file is empty.
 
-#### 3. Geração de identificador da câmera único
+#### 3. Generation of unique camera identifier
 
-Esta secção do projeto realiza algumas operações bitwise para gerar um identificador único para a câmera. O identificador é gerado a partir de 4 números aleatórios, que em seguida sofrem operações bitwise para gerar um número único.
+This section of the project performs some bitwise operations to generate a unique identifier for the camera. The identifier is generated from 4 random numbers, which then undergo bitwise operations to generate a unique number.
 
-Este número é utilizado para identificar a câmera na base de dados como sendo única.
+This number is used to identify the camera in the database as being unique.
 
-#### 4. Verificação de se existe uma câmera disponível
+#### 4. Checking if a camera is available
 
-Esta secção do projeto verifica se existe uma câmera disponível ao conectar-se a uma qualquer primeira câmera disponível.
+This section of the project checks if a camera is available by connecting to any first available camera.
 
-Esta parte do projeto serve primariamente para garantir que o resto do projeto funciona corretamente, uma vez que o projeto camara-py irá utilizar a câmera para capturar a imagem e processar a mesma.
+This part of the project serves primarily to ensure that the rest of the project works correctly, since the camara-py project will use the camera to capture the image and process it.
 
-Se não existir nenhuma câmera disponível, o projeto irá falhar e não irá funcionar. Assim, é necessário ter uma câmera (webcam por USB por exemplo) disponível para que o projeto funcione corretamente.
+If no camera is available, the project will fail and will not work. Thus, it is necessary to have a camera (webcam via USB for example) available for the project to work correctly.
 
-#### 5. Chamada GET ao camera-py
+#### 5. GET call to camera-py
 
-Nesta secção do projeto, o algoritmo irá fazer uma chamada GET ao projeto camara-py para capturar a imagem. O projeto camara-py é responsável por capturar a imagem e processar a mesma utilizando um modelo de machine learning para contar o número de pessoas na imagem.
+In this section of the project, the algorithm will make a GET call to the camara-py project to capture the image. The camara-py project is responsible for capturing the image and processing it using a machine learning model to count the number of people in the image.
 
-Aqui também é feita alguma verificação de erros, como por exemplo, se a chamada GET falhar. Se a chamada GET falhar, o projeto irá falhar e não irá funcionar. Assim, é necessário garantir que o projeto camara-py está a correr e que a chamada GET funciona corretamente.
+Some error checking is also done here, such as if the GET call fails. If the GET call fails, the project will fail and will not work. Thus, it is necessary to ensure that the camara-py project is running and that the GET call works correctly.
 
-#### 6. Processamento dos dados recebidos
+#### 6. Processing of received data
 
-Nesta secção do projeto, o projeto irá enviar as informações para uma backend configurada previamente no ficheiro `info.json`. O projeto irá enviar as informações utilizando o endpoint `/api/camaras/{camera_id}/lotacao` e uma chamada POST. 
+In this section of the project, the project will send the information to a backend previously configured in the `info.json` file. The project will send the information using the `/api/camaras/{camera_id}/lotacao` endpoint and a POST call.
 
-O corpo da mensagem deverá ser um JSON com a seguinte estrutura:
+The body of the message must be a JSON with the following structure:
 ```json
 {
     "people_count": 9,
@@ -104,21 +104,21 @@ O corpo da mensagem deverá ser um JSON com a seguinte estrutura:
 }
 ```
 
-Os campos que devem ser preenchidos são os seguintes:
-- `people_count`: O número de pessoas detetadas na imagem. Este número é o número de pessoas que foram detetadas na imagem capturada.
-- `timestamp`: O timestamp da imagem. Feito utilizando o epoch Unix, este número é o timestamp de quando o sistema capturou a imagem ou que executou o camera-py.
+The fields that must be filled in are the following:
+- `people_count`: The number of people detected in the image. This number is the number of people who were detected in the captured image.
+- `timestamp`: The image timestamp. Made using Unix epoch, this number is the timestamp of when the system captured the image or executed camera-py.
 
-#### 7. Envio dos dados para o servidor
-Nesta secção do projeto, o algoritmo irá enviar os dados para o servidor utilizando uma chamada POST. O projeto irá enviar as informações utilizando o endpoint `/api/camaras/{camera_id}/lotacao` e uma chamada POST.
+#### 7. Sending data to the server
+In this section of the project, the algorithm will send the data to the server using a POST call. The project will send the information using the `/api/camaras/{camera_id}/lotacao` endpoint and a POST call.
 
-#### 8. Loop para capturar a imagem de tempos em tempos
+#### 8. Loop to capture the image from time to time
 
-Nesta última secção do projeto, a aplicação irá ficar à espera durante o tempo configurado no ficheiro `info.json` e irá capturar a imagem periodicamente. O projeto irá continuar a correr até que o utilizador o pare manualmente ou que o servidor NIOP seja parado.
+In this last section of the project, the application will wait for the time configured in the `info.json` file and will capture the image periodically. The project will continue to run until the user stops it manually or the NIOP server is stopped.
 
-## Avisos finais
+## Final warnings
 
-**NOTA:** Como só temos acesso à versão trial do NIOP, a aplicação só irá executar durante 180 minutos. Após esse tempo, a aplicação irá parar automaticamente e não irá funcionar. Caso isso aconteça, é necessário dar o redeploy do workflow para que a aplicação volte a funcionar.
+**NOTE:** Since we only have access to the trial version of NIOP, the application will only run for 180 minutes. After that time, the application will automatically stop and will not work. If this happens, you need to redeploy the workflow for the application to work again.
 
-## Licença
+## License
 
-MIT License. Veja o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.

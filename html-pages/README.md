@@ -1,48 +1,48 @@
 # html-pages
 
-Esta pasta contém as páginas PHP para a gestão do sistema, organizadas em diferentes subdiretórios com base na funcionalidade.
+This folder contains the PHP pages for system management, organized into different subdirectories based on functionality.
 
-## Pasta `alertas`
-Contém páginas relacionadas com a gestão de alertas no sistema:
-- **adicionar.php**: Adicionar um novo alerta.
-- **desativar.php**: Desativar um alerta existente.
-- **editar.php**: Editar os detalhes de um alerta.
-- **enviar.php**: Placeholder para envio de alertas (não implementado).
-- **lista.php**: Listar todos os alertas com informações detalhadas.
-- **recentes.php**: Mostrar alertas recentes.
-- **remover.php**: Remover um alerta.
+## `alertas` Folder
+Contains pages related to alert management in the system:
+- **adicionar.php**: Add a new alert.
+- **desativar.php**: Deactivate an existing alert.
+- **editar.php**: Edit the details of an alert.
+- **enviar.php**: Placeholder for sending alerts (not implemented).
+- **lista.php**: List all alerts with detailed information.
+- **recentes.php**: Show recent alerts.
+- **remover.php**: Remove an alert.
 
-## Pasta `camaras`
-Contém páginas para a gestão de câmaras:
-- **adicionar.php**: Adicionar uma nova câmara.
-- **contagem.php**: Mostrar a contagem de pessoas detetadas por uma câmara específica.
-- **editar.php**: Editar os detalhes de uma câmara.
-- **lista.php**: Listar todas as câmaras com informações detalhadas.
-- **remover.php**: Remover uma câmara.
+## `camaras` Folder
+Contains pages for camera management:
+- **adicionar.php**: Add a new camera.
+- **contagem.php**: Show the count of people detected by a specific camera.
+- **editar.php**: Edit the details of a camera.
+- **lista.php**: List all cameras with detailed information.
+- **remover.php**: Remove a camera.
 
-## Pasta `paragens`
-Contém páginas para a gestão de paragens de autocarro:
-- **adicionar.php**: Adicionar uma nova paragem.
-- **editar.php**: Editar os detalhes de uma paragem.
-- **estado.php**: Obter o estado de uma paragem.
-- **favoritas.php**: Listar as paragens favoritas.
-- **lista.php**: Listar todas as paragens com informações detalhadas.
-- **lotacao.php**: Obter a lotação atual de uma paragem.
-- **remover.php**: Remover uma paragem.
+## `paragens` Folder
+Contains pages for bus stop management:
+- **adicionar.php**: Add a new stop.
+- **editar.php**: Edit the details of a stop.
+- **estado.php**: Get the status of a stop.
+- **favoritas.php**: List favorite stops.
+- **lista.php**: List all stops with detailed information.
+- **lotacao.php**: Get the current capacity of a stop.
+- **remover.php**: Remove a stop.
 
-## Pasta `relatorios`
-Contém páginas para a geração de relatórios:
-- **fluxo_passageiros.php**: Relatório sobre o fluxo de passageiros ao longo do tempo.
-- **geral.php**: Relatório geral sobre as paragens.
-- **lotacao_media.php**: Relatório sobre a lotação média das paragens.
-- **pico_lotacao.php**: Relatório sobre o pico de lotação das paragens.
-- **taxa_alertas.php**: Relatório sobre a taxa de alertas por gravidade.
+## `relatorios` Folder
+Contains pages for report generation:
+- **fluxo_passageiros.php**: Report on passenger flow over time.
+- **geral.php**: General report on stops.
+- **lotacao_media.php**: Report on the average capacity of stops.
+- **pico_lotacao.php**: Report on the peak capacity of stops.
+- **taxa_alertas.php**: Report on the alert rate by severity.
 
-## Pasta `static`
-Contém recursos estáticos, como ficheiros CSS:
-- **css/style.css**: Folha de estilos para ecrãs maiores.
-- **css/style-small.css**: Folha de estilos para ecrãs menores.
+## `static` Folder
+Contains static resources, such as CSS files:
+- **css/style.css**: Stylesheet for larger screens.
+- **css/style-small.css**: Stylesheet for smaller screens.
 
-## Licença
+## License
 
-MIT License. Veja o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.

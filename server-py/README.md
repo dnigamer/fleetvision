@@ -1,125 +1,125 @@
-# Projeto de Backend REST API - Sistema de Contagem de Pessoas
+# REST API Backend Project - People Counting System
 
-## Introdução
+## Introduction
 
-Este projeto implementa uma API RESTful desenvolvida em Python com FastAPI, responsável por gerir e disponibilizar dados de um sistema de contagem de pessoas em paragens de autocarro. 
+This project implements a RESTful API developed in Python with FastAPI, responsible for managing and providing data for a people counting system at bus stops.
 
-O backend integra-se com uma base de dados MySQL e permite a gestão de câmaras, paragens, alertas, registos de lotação e relatórios estatísticos.
+The backend integrates with a MySQL database and allows the management of cameras, stops, alerts, capacity records, and statistical reports.
 
-A API serve como backend para aplicações de monitorização, gestão e análise de dados de ocupação e alertas em tempo real, permitindo a integração com sistemas de frontend, dashboards ou outras aplicações.
+The API serves as a backend for real-time monitoring, management, and analysis applications of occupancy and alerts, allowing integration with frontend systems, dashboards, or other applications.
 
-## Funcionalidades Principais
+## Main Features
 
-- **Gestão de Câmaras**: Adicionar, listar, atualizar, remover e consultar dados de câmaras e respetivos registos de lotação.
-- **Gestão de Paragens**: Adicionar, listar, atualizar, remover, marcar/desmarcar como favorita e consultar dados de paragens.
-- **Gestão de Alertas**: Adicionar, listar, atualizar, remover, ativar/desativar, enviar e consultar alertas, incluindo alertas recentes.
-- **Relatórios**: Obter relatórios de fluxo de passageiros, lotação média, pico de lotação e taxa de alertas por paragem.
+- **Camera Management**: Add, list, update, remove, and query camera data and their respective capacity records.
+- **Stop Management**: Add, list, update, remove, mark/unmark as favorite, and query stop data.
+- **Alert Management**: Add, list, update, remove, activate/deactivate, send, and query alerts, including recent alerts.
+- **Reports**: Get reports on passenger flow, average capacity, peak capacity, and alert rate per stop.
 
-## Instalação
+## Installation
 
-1. **Pré-requisitos**:
-    - Python 3.8 ou superior
+1. **Prerequisites**:
+    - Python 3.8 or higher
     - MySQL Server
-    - Instalar dependências:
+    - Install dependencies:
     ```bash
     pip install fastapi uvicorn mysql-connector-python
     ```
 
-2. **Configuração da Base de Dados**:
-    - Para configurar a base de dados, é necessário criar uma base de dados MySQL e executar o script SQL disponível no diretório raiz do projeto com o nome `scriptDB.sql`. Este script irá criar as tabelas necessárias para o funcionamento da API.
+2. **Database Configuration**:
+    - To configure the database, you need to create a MySQL database and run the SQL script available in the project's root directory named `scriptDB.sql`. This script will create the necessary tables for the API to work.
 
-## Execução
-Para iniciar o servidor FastAPI, execute o seguinte comando no terminal:
+## Execution
+To start the FastAPI server, run the following command in the terminal:
 
 ```bash
 python main.py
 ```
 
-O servidor estará disponível em `http://localhost:8000`, a não ser que tenha configurado uma porta diferente.
+The server will be available at `http://localhost:8000`, unless you have configured a different port.
 
-## Documentação da API
-A documentação interativa da API pode ser acessada em `http://localhost:8000/docs` após iniciar o servidor. Esta documentação permite explorar os endpoints disponíveis, testar as requisições e visualizar os modelos de dados utilizados.
+## API Documentation
+The interactive API documentation can be accessed at `http://localhost:8000/docs` after starting the server. This documentation allows you to explore the available endpoints, test requests, and view the data models used.
 
-Imagem da documentação:
-![Documentação da API](assets/openapi.png)
+Documentation image:
+![API Documentation](assets/openapi.png)
 
-## Endpoints Disponíveis
+## Available Endpoints
 
-### Câmaras
+### Cameras
 
 - `GET /api/camaras`  
-  Lista todas as câmaras registadas.
+  Lists all registered cameras.
 - `GET /api/camaras/{camera_id}`  
-  Consulta os dados de uma câmara específica.
+  Queries the data of a specific camera.
 - `POST /api/camaras`  
-  Adiciona uma nova câmara.
+  Adds a new camera.
 - `PUT /api/camaras/{camera_id}`  
-  Atualiza os dados de uma câmara.
+  Updates the data of a camera.
 - `DELETE /api/camaras/{camera_id}`  
-  Remove uma câmara.
+  Removes a camera.
 - `GET /api/camaras/lotacao`  
-  Obtém a última lotação registada de todas as câmaras.
+  Gets the last registered capacity of all cameras.
 - `GET /api/camaras/{camera_id}/lotacao`  
-  Lista o histórico de lotação de uma câmara.
+  Lists the capacity history of a camera.
 - `POST /api/camaras/lotacao`  
-  Regista uma nova lotação para uma câmara.
+  Registers a new capacity for a camera.
 - `POST /api/camaras/{camera_id}/lotacao/{limit}`  
-  Regista uma nova lotação para uma câmara com limite.
+  Registers a new capacity for a camera with a limit.
 
-### Paragens
+### Stops
 
 - `GET /api/paragens`  
-  Lista todas as paragens.
+  Lists all stops.
 - `GET /api/paragens/{paragem_id}`  
-  Consulta os dados de uma paragem.
+  Queries the data of a stop.
 - `POST /api/paragens`  
-  Adiciona uma nova paragem.
+  Adds a new stop.
 - `PUT /api/paragens/{paragem_id}`  
-  Atualiza os dados de uma paragem.
+  Updates the data of a stop.
 - `DELETE /api/paragens/{paragem_id}`  
-  Remove uma paragem.
+  Removes a stop.
 - `GET /api/paragens/favoritas`  
-  Lista as paragens marcadas como favoritas.
+  Lists the stops marked as favorites.
 - `PUT /api/paragens/{paragem_id}/favoritas`  
-  Marca ou desmarca uma paragem como favorita.
+  Marks or unmarks a stop as favorite.
 - `GET /api/paragens/{paragem_id}/lotacao`  
-  Obtém a lotação atual de uma paragem.
+  Gets the current capacity of a stop.
 
-### Alertas
+### Alerts
 
 - `GET /api/alertas`  
-  Lista todos os alertas.
+  Lists all alerts.
 - `GET /api/alertas/{alerta_id}`  
-  Consulta os dados de um alerta.
+  Queries the data of an alert.
 - `POST /api/alertas`  
-  Adiciona um novo alerta.
+  Adds a new alert.
 - `PUT /api/alertas/{alerta_id}`  
-  Atualiza os dados de um alerta.
+  Updates the data of an alert.
 - `DELETE /api/alertas/{alerta_id}`  
-  Remove um alerta.
+  Removes an alert.
 - `PUT /api/alertas/{alerta_id}/desativar`  
-  Desativa (finaliza) um alerta.
+  Deactivates (finishes) an alert.
 - `PUT /api/alertas/{alerta_id}/ativar`  
-  Ativa um alerta.
+  Activates an alert.
 - `PUT /api/alertas/{alerta_id}/enviar`  
-  (Placeholder) Envia um alerta.
+  (Placeholder) Sends an alert.
 - `GET /api/alerta/recentes`  
-  Lista os alertas recentes.
+  Lists recent alerts.
 
-### Relatórios
+### Reports
 
 - `GET /api/relatorios/fluxopassageiros`  
-  Retorna o fluxo de passageiros (lotação ao longo do tempo) para cada paragem.
+  Returns the passenger flow (capacity over time) for each stop.
 - `GET /api/relatorios/lotacaomedia`  
-  Retorna a lotação média para cada paragem.
+  Returns the average capacity for each stop.
 - `GET /api/relatorios/picolotacao`  
-  Retorna o pico de lotação para cada paragem.
+  Returns the peak capacity for each stop.
 - `GET /api/relatorios/taxaalertas`  
-  Retorna a taxa de alertas por paragem.
+  Returns the alert rate per stop.
 
-## Exemplo de Utilização
+## Usage Example
 
-### Adicionar uma nova câmara
+### Add a new camera
 
 ```bash
 curl -X POST http://localhost:8080/api/camaras \
@@ -127,28 +127,28 @@ curl -X POST http://localhost:8080/api/camaras \
   -d '{"paragem_id":1,"modelo":"Canon EOS","fabricante":"Canon","latitude":41.55,"longitude":-8.42,"data_instalacao":"2025-04-20","estado":"Ativo"}'
 ```
 
-### Obter relatório de lotação média
+### Get average capacity report
 
 ```bash
 curl http://localhost:8080/api/relatorios/lotacaomedia
 ```
 
-## Estrutura da Base de Dados
+## Database Structure
 
-A base de dados é composta por quatro tabelas principais: `paragens`, `camaras`, `alertas` e `registo_lotacao`. Também inclui várias views para relatórios (alertas recentes, lotação média, pico de lotação, taxa de alertas e fluxo de lotação) e uma trigger que mantém a lotação atualizada em cada paragem após novos registos.
+The database consists of four main tables: `paragens`, `camaras`, `alertas`, and `registo_lotacao`. It also includes several views for reports (recent alerts, average capacity, peak capacity, alert rate, and capacity flow) and a trigger that keeps the capacity updated at each stop after new registrations.
 
-**Resumo das tabelas:**
-- **paragens**: Dados das paragens de autocarro (nome, localização, estado, lotação, favorita).
-- **camaras**: Informações das câmaras instaladas em cada paragem.
-- **alertas**: Registo de alertas gerados pelo sistema, associados a paragens e câmaras.
-- **registo_lotacao**: Histórico de contagem de pessoas por câmara e paragem.
+**Tables summary:**
+- **paragens**: Bus stop data (name, location, status, capacity, favorite).
+- **camaras**: Information about the cameras installed at each stop.
+- **alertas**: Record of alerts generated by the system, associated with stops and cameras.
+- **registo_lotacao**: People counting history by camera and stop.
 
-**Views e trigger:**
-- Views para relatórios de alertas, lotação média/pico, taxa de alertas e fluxo de passageiros.
-- Trigger para atualizar automaticamente a lotação da paragem após novo registo.
+**Views and trigger:**
+- Views for alert reports, average/peak capacity, alert rate, and passenger flow.
+- Trigger to automatically update the stop capacity after a new record.
 
-O script SQL completo encontra-se no ficheiro `scriptDB.sql` no diretório do projeto.
+The complete SQL script can be found in the `scriptDB.sql` file in the project directory.
 
-## Licença
+## License
 
-MIT License. Consulte o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.

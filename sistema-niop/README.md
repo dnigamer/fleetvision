@@ -1,31 +1,31 @@
 # sistema-niop
 
-## Introdução
-Esta pasta contém o código total do sistema que apresenta os dados registados na base de dados do sistema de contagem de pessoas nas paragens. Esta aplicação foi desenvolvida utilizando a ferramenta de low-code niop. 
+## Introduction
+This folder contains the complete code for the system that displays the recorded data from the people counting system database at the stops. This application was developed using the niop low-code tool.
 
-O sistema consiste numa aplicação contendo diferentes páginas, cada uma com um propósito específico. Abaixo, apresentamos uma breve descrição de cada página e suas funcionalidades.
+The system consists of an application containing different pages, each with a specific purpose. Below, we provide a brief description of each page and its functionalities.
 
-## Execução do projeto
-Para executar o projeto, é necessário ter o niop instalado, tal como uma base de dados MySQL e um servidor web (Apache, Nginx, etc.) configurado para servir os ficheiros PHP do projeto.
+## Project Execution
+To execute the project, you must have niop installed, as well as a MySQL database and a web server (Apache, Nginx, etc.) configured to serve the project's PHP files.
 
-1. **Instalar o niop**: Siga as instruções de instalação do niop studio e do niop HMI.
-2. **Configurar a base de dados**: Certifique-se de que a base de dados MySQL está configurada corretamente e que as tabelas necessárias estão criadas. Para informações sobre a estrutura da base de dados, consulte o script de criação da base de dados incluído no projeto.
-3. **Configurar o servidor web**: Configure o servidor web para apontar para a pasta onde os ficheiros do projeto estão localizados (ex. `http://localhost/`).
-4. **Executar o projeto**: Após verificar que tudo está configurado corretamente, abra o niop HMI, niop Studio e inicie o projeto. A aplicação deve carregar e apresentar as páginas que compõem o sistema.
+1. **Install niop**: Follow the installation instructions for niop studio and niop HMI.
+2. **Configure the database**: Ensure the MySQL database is configured correctly and the necessary tables are created. For information about the database structure, refer to the database creation script included in the project.
+3. **Configure the web server**: Configure the web server to point to the folder where the project files are located (e.g., `http://localhost/`).
+4. **Run the project**: After ensuring everything is configured correctly, open niop HMI, niop Studio, and start the project. The application should load and display the pages that make up the system.
 
-## Requisitos
-- **niop**: Ferramenta de desenvolvimento low-code/no-code.
-- **PHP**: Versão 7.4 ou superior.
-- **MySQL**: Versão 5.7 ou superior.
-- **Servidor Web**: Apache, Nginx ou outro servidor compatível com PHP.
+## Requirements
+- **niop**: Low-code/no-code development tool.
+- **PHP**: Version 7.4 or higher.
+- **MySQL**: Version 5.7 or higher.
+- **Web Server**: Apache, Nginx, or another PHP-compatible server.
 
-## Instalação
+## Installation
 
-Para instalar a parte do sistema que carrega as páginas PHP, siga os seguintes passos:
-1. **Instale o XAMPP**: O XAMPP é um pacote que inclui o Apache, MySQL e PHP. Pode ser descarregado a partir do site oficial do XAMPP (https://www.apachefriends.org/index.html).
-2. **Descarregue o projeto**: Faça o download do código do projeto a partir do repositório GitHub ou do local onde o código está hospedado.
-3. **Coloque os ficheiros na pasta do XAMPP**: Copie os conteúdos da pasta html-pages do projeto diretamente para a pasta `htdocs` do XAMPP. Normalmente, esta pasta está localizada em `C:\xampp\htdocs` no Windows ou `/opt/lampp/htdocs` no Linux.
-   - Exemplo: Se o nome do projeto for `sistema-niop`, a estrutura de pastas deve ser `C:\xampp\htdocs\` ou `/opt/lampp/htdocs/` tendo todos os subdiretórios e ficheiros do projeto dentro dessa pasta.
+To install the part of the system that loads the PHP pages, follow these steps:
+1. **Install XAMPP**: XAMPP is a package that includes Apache, MySQL, and PHP. It can be downloaded from the official XAMPP website (https://www.apachefriends.org/index.html).
+2. **Download the project**: Download the project code from the GitHub repository or the location where the code is hosted.
+3. **Place the files in the XAMPP folder**: Copy the contents of the project's html-pages folder directly to the XAMPP `htdocs` folder. Normally, this folder is located in `C:\xampp\htdocs` on Windows or `/opt/lampp/htdocs` on Linux.
+   - Example: If the project name is `sistema-niop`, the folder structure should be `C:\xampp\htdocs\` or `/opt/lampp/htdocs/` having all subdirectories and project files within that folder.
       ```
       C:\xampp\htdocs\
         ├── alertas
@@ -62,152 +62,152 @@ Para instalar a parte do sistema que carrega as páginas PHP, siga os seguintes 
                 └── style.css
         └── config.php
       ```
-4. **Configurar o XAMPP**: Certifique-se de que o XAMPP está configurado corretamente para servir ficheiros PHP. Normalmente, isso já está configurado por padrão.
-   - Para além disso, verifique o ficheiro `config.php` na raiz do projeto para garantir que as configurações de conexão com a base de dados estão corretas (nome do utilizador, palavra-passe, nome da base de dados).
+4. **Configure XAMPP**: Make sure XAMPP is configured correctly to serve PHP files. Usually, this is already configured by default.
+   - Also, check the `config.php` file in the project root to ensure that the database connection settings are correct (username, password, database name).
       ```php
       <?php
-      $host = 'ip-do-servidor';    // Exemplo: 'localhost' ou '127.0.0.1'
-      $dbname = 'bd_sistema_niop'; // Nome da base de dados
-      $username = 'user';          // Nome de utilizador da base de dados
-      $password = 'palavra-passe'; // Palavra-passe da base de dados
+      $host = 'server-ip';         // Example: 'localhost' or '127.0.0.1'
+      $dbname = 'bd_sistema_niop'; // Database name
+      $username = 'user';          // Database username
+      $password = 'password';      // Database password
       ...
       ```
 
-4. **Inicie o XAMPP**: Abra o painel de controlo do XAMPP e inicie os serviços do Apache e MySQL.
-5. **Aceda ao servidor XAMPP**: Abra um navegador web e digite `http://localhost`, onde `nome-do-projeto` é o nome da pasta que você copiou para a pasta `htdocs` (de preferência, `http://localhost/` pois o projeto é carregado diretamente na raiz do servidor). 
+4. **Start XAMPP**: Open the XAMPP control panel and start the Apache and MySQL services.
+5. **Access the XAMPP server**: Open a web browser and type `http://localhost`, where `project-name` is the name of the folder you copied to the `htdocs` folder (preferably `http://localhost/` since the project is loaded directly in the server root).
 
-Ao aceder a esta URL, deverá ver o conteúdo da pasta `htdocs`, incluindo os ficheiros do projeto.
+When accessing this URL, you should see the contents of the `htdocs` folder, including the project files.
 
-## Explicação do projeto
+## Project Explanation
 
-Devido ao facto que o projeto é "low-code/no-code", não é possível explicar o projeto a partir de linhas de código. 
+Due to the fact that the project is "low-code/no-code", it is not possible to explain the project from lines of code.
 
-Este projeto pode conter bastantes linhas a ir de um lado para o outro, mas a explicação do projeto é bastante simples, pois o projeto somente apresenta interfaces gráficas e não contém lógica de operações complexas.
+This project can contain many lines going back and forth, but the explanation of the project is quite simple, as the project only presents graphical interfaces and does not contain complex operational logic.
 
-O sistema é composto por uma interface gráfica (HMI) que permite ao utilizador interagir com as diferentes funcionalidades do sistema. A lógica de funcionamento do sistema é dividida em duas partes principais: a parte direita e a parte esquerda. 
+The system consists of a graphical interface (HMI) that allows the user to interact with the different functionalities of the system. The system's operational logic is divided into two main parts: the left part and the right part.
 
-Assim, o código do projeto é composto por pelo menos 2 partes principais:
+Thus, the project code consists of at least 2 main parts:
 ![sistema-niop](assets/niop.png)
 
-**Parte esquerda**: Contém a lógica que verifica se o HMI está ONLINE ou OFFLINE, e funcional, verificando se houve algum input do utilizador, alterando a página atual.
+**Left part**: Contains the logic that checks whether the HMI is ONLINE or OFFLINE, and functional, checking if there was any user input, changing the current page.
 
-**Parte direita**: Contém a lógica de mudança de paginas, onde cada página é uma entidade que contém os componentes e a lógica para realizaar operações específicas (ex. Câmaras, Paragens, Alertas, Relatórios).
+**Right part**: Contains the page change logic, where each page is an entity that contains the components and logic to perform specific operations (e.g., Cameras, Stops, Alerts, Reports).
 
-## Página Inicial
+## Home Page
 
-A página inicial do sistema serve como um painel de controle central, oferecendo uma visão geral rápida do estado do sistema e acesso às principais funcionalidades. Ela contém:
+The system's home page serves as a central control panel, providing a quick overview of the system's status and access to key features. It contains:
 
-- **Menu Lateral**: Localizado à esquerda, permite navegar entre as diferentes páginas do sistema, como:
-  - **Câmaras**: Gerenciamento das câmaras conectadas.
-  - **Paragens**: Informações sobre as paragens monitoradas.
-  - **Alertas**: Exibição de alertas recentes.
-  - **Relatórios**: Geração e visualização de relatórios.
-  - **Configurações**: Ajustes e preferências do sistema.
+- **Side Menu**: Located on the left, it allows navigating between the different pages of the system, such as:
+  - **Cameras**: Management of connected cameras.
+  - **Stops**: Information about monitored stops.
+  - **Alerts**: Display of recent alerts.
+  - **Reports**: Generation and viewing of reports.
+  - **Settings**: System adjustments and preferences.
 
-- **Estado do Sistema**: Exibido no canto superior direito, indicando se o sistema está operacional (ONLINE) ou não (OFFLINE).
+- **System Status**: Displayed in the upper right corner, indicating whether the system is operational (ONLINE) or not (OFFLINE).
 
-- **Alertas Recentes**: Uma tabela central que lista os alertas mais recentes, incluindo informações como ID, data, descrição do alerta e gravidade.
+- **Recent Alerts**: A central table that lists the most recent alerts, including information such as ID, date, alert description, and severity.
 
-- **Paragens Favoritas**: Uma tabela que exibe as paragens marcadas como favoritas pelo usuário, com informações como nome e contagem de pessoas.
+- **Favorite Stops**: A table displaying stops marked as favorites by the user, with information such as name and people count.
 
-- **Mensagem de Boas-Vindas**: Um texto centralizado que dá as boas-vindas ao usuário.
+- **Welcome Message**: Centered text that welcomes the user.
 
-Essa página foi projetada para ser intuitiva e fornecer acesso rápido às informações mais importantes do sistema.
+This page was designed to be intuitive and provide quick access to the most important system information.
 
-Imagem:
+Image:
 ![homepage](assets/homepage.png)
 
-## Câmaras
+## Cameras
 
-A página de **Câmaras** permite gerenciar as câmaras conectadas ao sistema. Nela, o usuário pode realizar as seguintes ações:
+The **Cameras** page allows you to manage the cameras connected to the system. On it, the user can perform the following actions:
 
-- **Adicionar Câmara**: Inserir uma nova câmara no sistema, especificando informações como modelo, fabricante, e paragem associada.
-- **Editar Câmara**: Atualizar os dados de uma câmara existente.
-- **Remover Câmara**: Excluir uma câmara do sistema.
-- **Obter Contagem**: Consultar a contagem de pessoas registrada por uma câmara específica.
+- **Add Camera**: Insert a new camera into the system, specifying information such as model, manufacturer, and associated stop.
+- **Edit Camera**: Update data for an existing camera.
+- **Remove Camera**: Delete a camera from the system.
+- **Get Count**: Check the limit of people recorded by a specific camera.
 
-Além disso, a página exibe uma tabela com a lista de câmaras registadas, contendo as seguintes informações:
-- **ID**: Identificador único da câmara.
-- **Paragem**: Paragem associada à câmara.
-- **Modelo**: Modelo da câmara.
-- **Fabricante**: Fabricante da câmara.
-- **Data de Instalação**: Data em que a câmara foi instalada.
-- **Estado**: Estado atual da câmara (Ativo ou Inativo).
+Furthermore, the page displays a table with the list of registered cameras, containing the following information:
+- **ID**: Unique camera identifier.
+- **Stop**: Stop associated with the camera.
+- **Model**: Camera model.
+- **Manufacturer**: Camera manufacturer.
+- **Installation Date**: Date the camera was installed.
+- **Status**: Current status of the camera (Active or Inactive).
 
-Essa página foi projetada para facilitar o gerenciamento das câmaras e garantir que todas as informações estejam organizadas e acessíveis.
+This page is designed to facilitate camera management and ensure all information is organized and accessible.
 
-Imagem:
+Image:
 ![camaras](assets/camaras.png)
 
-## Paragens
+## Stops
 
-A página de **Paragens** permite gerenciar as paragens monitoradas pelo sistema. Nela, o usuário pode realizar as seguintes ações:
+The **Stops** page allows you to manage the stops monitored by the system. On it, the user can perform the following actions:
 
-- **Adicionar Paragem**: Inserir uma nova paragem no sistema, especificando informações como nome e localização.
-- **Editar Paragem**: Atualizar os dados de uma paragem existente.
-- **Remover Paragem**: Excluir uma paragem do sistema.
-- **Obter Estado**: Consultar o estado atual de uma paragem (Ativo ou Inativo).
-- **Atualizar Lotação**: Atualizar manualmente a lotação de uma paragem.
+- **Add Stop**: Insert a new stop into the system, specifying information such as name and location.
+- **Edit Stop**: Update data for an existing stop.
+- **Remove Stop**: Delete a stop from the system.
+- **Get Status**: Consult the current status of a stop (Active or Inactive).
+- **Update Capacity**: Manually update the capacity of a stop.
 
-Além disso, a página exibe uma tabela com a lista de paragens cadastradas, contendo as seguintes informações:
-- **ID**: Identificador único da paragem.
-- **Nome**: Nome da paragem.
-- **Localização**: Localização da paragem.
-- **Estado**: Estado atual da paragem (Ativo ou Inativo).
-- **Lotação**: Número atual de pessoas na paragem.
+Additionally, the page displays a table with the list of registered stops, containing the following information:
+- **ID**: Unique stop identifier.
+- **Name**: Stop name.
+- **Location**: Stop location.
+- **Status**: Current stop status (Active or Inactive).
+- **Capacity**: Current number of people at the stop.
 
-Essa página foi projetada para facilitar o gerenciamento das paragens e garantir que todas as informações estejam organizadas e acessíveis.
+This page is designed to facilitate the management of stops and ensure all information is organized and accessible.
 
-Imagem:
+Image:
 ![paragens](assets/paragens.png)
 
-## Alertas
+## Alerts
 
-A página de **Alertas** permite gerenciar os alertas gerados pelo sistema. Nela, o usuário pode realizar as seguintes ações:
+The **Alerts** page allows you to manage the alerts generated by the system. On it, the user can perform the following actions:
 
-- **Adicionar Alerta**: Criar um novo alerta no sistema, especificando informações como paragem, câmara, tipo e descrição.
-- **Editar Alerta**: Atualizar os dados de um alerta existente.
-- **Remover Alerta**: Excluir um alerta do sistema.
-- **Enviar Alerta**: Notificar os responsáveis sobre um alerta específico.
-- **Desativar Alerta**: Alterar o estado de um alerta para desativado.
+- **Add Alert**: Create a new alert in the system, specifying information such as stop, camera, type, and description.
+- **Edit Alert**: Update the data of an existing alert.
+- **Remove Alert**: Delete an alert from the system.
+- **Send Alert**: Notify the responsible parties about a specific alert.
+- **Deactivate Alert**: Change the status of an alert to deactivated.
 
-Além disso, a página exibe uma tabela com a lista de alertas registrados, contendo as seguintes informações:
-- **ID**: Identificador único do alerta.
-- **Paragem**: Paragem associada ao alerta.
-- **Câmara**: Câmara associada ao alerta.
-- **Data Alerta**: Data em que o alerta foi gerado.
-- **Data Resolução**: Data em que o alerta foi resolvido (se aplicável).
-- **Tipo Alerta**: Tipo do alerta (e.g., Serviço, Segurança).
-- **Descrição**: Descrição detalhada do alerta.
-- **Gravidade**: Nível de gravidade do alerta.
-- **Estado**: Estado atual do alerta (e.g., Pendente, Finalizado).
+Furthermore, the page displays a table with the list of registered alerts, containing the following information:
+- **ID**: Unique alert identifier.
+- **Stop**: Stop associated with the alert.
+- **Camera**: Camera associated with the alert.
+- **Alert Date**: Date the alert was generated.
+- **Resolution Date**: Date the alert was resolved (if applicable).
+- **Alert Type**: Type of the alert (e.g., Service, Security).
+- **Description**: Detailed description of the alert.
+- **Severity**: Severity level of the alert.
+- **Status**: Current status of the alert (e.g., Pending, Finished).
 
-Essa página foi projetada para facilitar o acompanhamento e a resolução de problemas detectados pelo sistema, garantindo que os alertas sejam tratados de forma eficiente.
+This page is designed to facilitate the tracking and resolution of problems detected by the system, ensuring that alerts are handled efficiently.
 
-Imagem:
+Image:
 ![alertas](assets/alertas.png)
 
-## Relatórios
+## Reports
 
-A página de **Relatórios** permite gerar e visualizar relatórios baseados nos dados coletados pelo sistema. Nela, o usuário pode realizar as seguintes ações:
+The **Reports** page allows you to generate and view reports based on data collected by the system. On it, the user can perform the following actions:
 
-- **Obter Lotação Média**: Calcular a lotação média das paragens monitoradas.
-- **Obter Pico Lotação**: Identificar o pico de lotação em cada paragem.
-- **Obter Fluxo Passageiros**: Analisar o fluxo de passageiros em diferentes paragens.
-- **Obter Taxa de Alertas**: Calcular a taxa de alertas gerados em relação ao total de paragens ou câmaras.
+- **Get Average Capacity**: Calculate the average capacity of the monitored stops.
+- **Get Peak Capacity**: Identify the peak capacity at each stop.
+- **Get Passenger Flow**: Analyze the passenger flow at different stops.
+- **Get Alert Rate**: Calculate the rate of alerts generated in relation to the total number of stops or cameras.
 
-Além disso, a página exibe uma tabela com a lista de paragens, contendo as seguintes informações:
-- **ID**: Identificador único da paragem.
-- **Nome**: Nome da paragem.
-- **Localização**: Localização da paragem.
-- **Estado**: Estado atual da paragem (Ativo ou Inativo).
-- **Lotação**: Número atual de pessoas na paragem.
+In addition, the page displays a table with the list of stops, containing the following information:
+- **ID**: Unique stop identifier.
+- **Name**: Stop name.
+- **Location**: Stop location.
+- **Status**: Current stop status (Active or Inactive).
+- **Capacity**: Current number of people at the stop.
 
-Essa página foi projetada para fornecer relatórios detalhados sobre o sistema, ajudando na tomada de decisões e no acompanhamento do desempenho das paragens monitoradas.
+This page is designed to provide detailed reports on the system, aiding in decision making and monitoring the performance of monitored stops.
 
-Imagem:
+Image:
 ![relatorios](assets/relatorios.png)
 
-## Licença
+## License
 
-MIT License. Veja o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.

@@ -1,104 +1,104 @@
-# Projeto de Desenvolvimento Integrado de Software - Câmara Python
-## Grupo 3 - 2024/25
+# Integrated Software Development Project - Python Camera
+## Group 3 - 2024/25
 
-## Introdução
+## Introduction
 
-O projeto consiste na implementação de um sistema de deteção de pessoas em imagens, utilizando técnicas de visão computacional e machine learning para contar o número de pessoas presentes numa determinada paragem de autocarro. A partir ou de imagens ou de uma stream de webcam, o sistema deve ser capaz de identificar e contar o número de pessoas presentes na imagem ou stream.
+The project consists of implementing a system for detecting people in images, using computer vision and machine learning techniques to count the number of people present at a given bus stop. From either images or a webcam stream, the system must be able to identify and count the number of people present in the image or stream.
 
-A utilização deste sistema será feita por parte de um operador de transportes públicos, que poderá utilizar a informação obtida para otimizar a gestão de recursos e melhorar a eficiência do serviço prestado.
+The use of this system will be done by a public transport operator, who will be able to use the information obtained to optimize resource management and improve the efficiency of the service provided.
 
-Este projeto feito em Python, utiliza certas bibliotecas e modelos de machine learning para realizar a deteção de pessoas que não estão disponíveis no programa indicado para o desenvolvimento deste projeto (niop Studio). Assim, parte do projeto foi desenvolvido fora do niop Studio, utilizando Python e as bibliotecas OpenCV, Ultralytics e NumPy para integração com um algoritmo de deteção de objetos. 
+This project made in Python utilizes certain libraries and machine learning models to perform people detection that are not available in the program indicated for the development of this project (niop Studio). Thus, part of the project was developed outside of niop Studio, using Python and the OpenCV, Ultralytics, and NumPy libraries for integration with an object detection algorithm.
 
-O modelo YOLOv5 foi utilizado para a deteção de pessoas, e o algoritmo de contagem foi implementado utilizando técnicas de processamento de imagem e machine learning.
+The YOLOv5 model was used for people detection, and the counting algorithm was implemented using image processing and machine learning techniques.
 
-## Instalação
+## Installation
 
-Devido ao facto de o projeto ter sido desenvolvido fora do niop Studio, é necessário instalar as bibliotecas necessárias para a execução do projeto. Para tal, é necessário ter o Python 3.8 ou superior instalado no seu sistema para poder fazer ou a compilação do projeto ou a execução do mesmo. 
+Due to the fact that the project was developed outside of niop Studio, it is necessary to install the required libraries to run the project. To do this, you must have Python 3.8 or higher installed on your system to be able to either compile the project or run it.
 
-Para instalar as bibliotecas necessárias, execute o seguinte comando no terminal:
+To install the necessary libraries, run the following command in the terminal:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Execução
+## Execution
 
-Após a instalação das bibliotecas necessárias, é possível executar o projeto. Para tal, execute o seguinte comando no terminal:
+After installing the necessary libraries, it is possible to execute the project. To do this, run the following command in the terminal:
 ```bash
 python main.py
 ```
 
-Sem qualquer argumento passado, o programa vai automaticamente tirar uma imagem da webcam e executar a deteção de pessoas nessa imagem capturada utilizando um modelo predefinido do YOLOv5. Se não houver webcam disponível, o programa irá falhar por não ter nenhuma imagem para processar.
+Without any arguments passed, the program will automatically take a picture from the webcam and perform people detection on that captured image using a predefined YOLOv5 model. If there is no webcam available, the program will fail due to not having any image to process.
 
-### Argumentos
+### Arguments
 
 #### --image, -i
 
-O argumento `--image` ou `-i` permite especificar o caminho para uma imagem de entrada. Se não for fornecido, o programa irá utilizar a webcam como fonte de imagem.
+The `--image` or `-i` argument allows you to specify the path to an input image. If not provided, the program will use the webcam as the image source.
 
 #### --verbose, -v
 
-O argumento `--verbose` ou `-v` ativa a saída detalhada do programa. Isso pode incluir informações adicionais sobre o processamento da imagem e os resultados da deteção.
+The `--verbose` or `-v` argument enables detailed output of the program. This may include additional information about image processing and detection results.
 
 #### --output, -o
 
-O argumento `--output` ou `-o` permite especificar o caminho para salvar a imagem de saída. Se não for fornecido, a imagem de saída não será salva.
+The `--output` or `-o` argument allows you to specify the path to save the output image. If not provided, the output image will not be saved.
 
 #### --model, -m
 
-O argumento `--model` ou `-m` permite especificar o caminho para o arquivo de pesos do modelo YOLOv5. O valor padrão é `yolov5su.pt`, que é um modelo pré-treinado. Se quiser utilizar outro modelo, deve especificar o caminho para o arquivo de pesos correspondente.
+The `--model` or `-m` argument allows you to specify the path to the YOLOv5 model weights file. The default value is `yolov5su.pt`, which is a pre-trained model. If you want to use another model, you must specify the path to the corresponding weights file.
 
 #### --server, -s
 
-O argumento `--server` ou `-s` ativa o modo de execução como um servidor FastAPI. Isso permite que o programa seja executado como uma API REST, onde pode ser chamado para processar imagens e retornar os resultados em formato JSON.
+The `--server` or `-s` argument enables the execution mode as a FastAPI server. This allows the program to run as a REST API, where it can be called to process images and return the results in JSON format.
 
 #### --camera, -c
 
-O argumento `--camera` ou `-c` permite especificar o ID da câmara a utilizar como fonte de imagem. O ID da câmara é o número da câmara que pode ser utilizado para selecionar a câmara a utilizar como imagem de entrada. Se não for fornecido, o programa irá utilizar a câmara padrão do sistema de ID 0.
+The `--camera` or `-c` argument allows you to specify the camera ID to use as the image source. The camera ID is the camera number that can be used to select the camera to use as input image. If not provided, the program will use the system's default camera with ID 0.
 
 #### --help
 
-O argumento `--help` exibe a ajuda do programa, mostrando todos os argumentos disponíveis e suas descrições.
+The `--help` argument displays the program's help, showing all available arguments and their descriptions.
 
-**NOTA:** Reforçando, se não for fornecido nenhum argumento, o programa irá utilizar o modelo pré-treinado `yolov5su.pt` como padrão e imprimirá apenas os resultados na consola sem qualquer outra informação ou output.
+**NOTE:** Reinforcing, if no argument is provided, the program will use the pre-trained `yolov5su.pt` model by default and will only print the results to the console without any other information or output.
 
-## Exemplo de execução
+## Execution Example
 
-Como exemplo, vamos executar o programa utilizando a câmara como imagem de entrada e ativando a saída detalhada:
+As an example, let's run the program using the camera as the input image and enabling detailed output:
 ```bash
-python main.py --verbose --output /caminho/para/imagem_saida.jpg
+python main.py --verbose --output /path/to/output_image.jpg
 ```
-Isto irá processar a imagem especificada, ativar a saída detalhada e guardar a imagem de saída no caminho especificado. O programa irá imprimir os resultados da deteção na consola.
+This will process the specified image, enable detailed output, and save the output image to the specified path. The program will print the detection results to the console.
 ```txt
 Captured image from camera and saved as 'frame.jpg'.
 Using model: yolov5lu.pt
 Input image: frame.jpg
-Output image: imagem_saida.jpg
+Output image: output_image.jpg
 Model loaded from yolov5lu.pt.
 Number of people detected: 9
-Saving output image to 'imagem_saida.jpg'.
+Saving output image to 'output_image.jpg'.
 ```
 
-Como imagem de entrada, foi esta a imagem capturada:
+As the input image, this was the captured image:
 ![](assets/image.jpg)
 
-E como imagem de saída, foi esta a imagem processada:
+And as the output image, this was the processed image:
 ![](assets/image_out.jpg)
 
-Como é possível observar, o programa conseguiu detetar 9 pessoas na imagem capturada. Nem sempre o número de pessoas detetadas corresponde ao número real de pessoas na imagem, uma vez que o modelo YOLOv5 pode ter dificuldades em detetar pessoas em determinadas condições de iluminação ou ângulos de visão. No entanto, o modelo é bastante preciso e consegue detetar a maioria das pessoas presentes na imagem.
+As can be seen, the program was able to detect 9 people in the captured image. The number of people detected does not always correspond to the actual number of people in the image, since the YOLOv5 model can have difficulties detecting people in certain lighting conditions or viewing angles. However, the model is quite accurate and can detect most of the people present in the image.
 
-## Exemplo de execução em modo REST API
+## Execution Example in REST API mode
 
-Para executar o projeto em modo REST API, é necessário ter o fastapi instalado. Para tal, execute o seguinte comando no terminal:
+To run the project in REST API mode, it is necessary to have fastapi installed. To do this, run the following command in the terminal:
 ```bash
 pip install fastapi
 ```
 
-Após a instalação do fastapi, só é necessário executar o seguinte comando no terminal para iniciar o servidor:
+After installing fastapi, it is only necessary to run the following command in the terminal to start the server:
 ```bash
 python main.py --server
 ```
 
-Isto irá iniciar o servidor FastAPI na porta 8000. O servidor irá expor um endpoint `/detect` que pode ser utilizado para analizar a imagem da webcam sempre que for chamado. O endpoint irá retornar um JSON com o número de pessoas detetadas na imagem capturada, dentro do seguinte formato:
+This will start the FastAPI server on port 8000. The server will expose a `/detect` endpoint that can be used to analyze the webcam image whenever it is called. The endpoint will return a JSON with the number of people detected in the captured image, within the following format:
 ```json
 {
     "num_pessoas":0,
@@ -106,43 +106,43 @@ Isto irá iniciar o servidor FastAPI na porta 8000. O servidor irá expor um end
     "output_path":"...\\camara-py\\output.jpg"
 }
 ```
-O campo `num_pessoas` indica o número de pessoas detetadas na imagem, o campo `tempo` indica o tempo que demorou a processar a imagem e o campo `output_path` indica o caminho para a imagem de saída.
+The `num_pessoas` field indicates the number of people detected in the image, the `tempo` field indicates the time it took to process the image, and the `output_path` field indicates the path to the output image.
 
-## Endpoints REST API
-O servidor FastAPI irá expor os seguintes endpoints:
+## REST API Endpoints
+The FastAPI server will expose the following endpoints:
 
 ### GET `/detect`
-Este endpoint irá capturar uma imagem da webcam, processá-la e retornar o número de pessoas detetadas na imagem. O tempo que demorou a processar a imagem e o caminho para a imagem de saída também serão retornados.
+This endpoint will capture an image from the webcam, process it, and return the number of people detected in the image. The time it took to process the image and the path to the output image will also be returned.
 
 ### GET `/camaras`
-Este endpoint irá retornar uma lista com os IDs das câmaras disponíveis no sistema. O ID da câmara é o número da câmara que pode ser utilizado para selecionar a câmara a utilizar como imagem de entrada.
+This endpoint will return a list with the IDs of the cameras available in the system. The camera ID is the camera number that can be used to select the camera to use as an input image.
 
-## Compilação para um ficheiro executável
+## Compilation to an executable file
 
-Para compilar o projeto para um ficheiro executável, é necessário ter o PyInstaller instalado. Para tal, execute o seguinte comando no terminal:
+To compile the project to an executable file, it is necessary to have PyInstaller installed. To do this, run the following command in the terminal:
 ```bash
 pip install pyinstaller
 ```
 
-Após a instalação do PyInstaller, execute o seguinte comando no terminal para compilar o projeto:
+After installing PyInstaller, run the following command in the terminal to compile the project:
 ```bash
 pyinstaller --onefile main.py
 ```
 
-Isto irá gerar um ficheiro executável na pasta `dist` com o nome `main.exe` (ou `main` no Linux). O ficheiro executável pode ser executado diretamente sem a necessidade de ter o Python ou as bibliotecas instaladas.
+This will generate an executable file in the `dist` folder with the name `main.exe` (or `main` on Linux). The executable file can be run directly without the need to have Python or the libraries installed.
 
-O executável irá funcionar da mesma forma que o script Python, aceitando os mesmos argumentos e opções. No entanto, é importante notar que o executável pode ser maior em tamanho devido à inclusão das bibliotecas necessárias.
+The executable will work in the same way as the Python script, accepting the same arguments and options. However, it is important to note that the executable may be larger in size due to the inclusion of the necessary libraries.
 
-Outro ponto a ter em conta é que o executável não irá funcionar fora do sistema operativo para o qual foi compilado. Ou seja, se compilar o projeto no Windows, o executável só irá funcionar no Windows. Para compilar o projeto para outro sistema operativo, deve-se utilizar o PyInstaller nesse sistema operativo.
+Another point to take into account is that the executable will not work outside the operating system for which it was compiled. That is, if you compile the project on Windows, the executable will only work on Windows. To compile the project for another operating system, you must use PyInstaller on that operating system.
 
-### Considerações acerca do executável
+### Considerations about the executable
 
-O programa de saída pode demorar algum tempo a ser gerado, cerca de 2 a 3 minutos, dependendo do tamanho do projeto e da velocidade do computador usado. 
+The output program may take some time to be generated, about 2 to 3 minutes, depending on the size of the project and the speed of the computer used.
 
-O tempo de execução do programa de saída é **relativamente mais elevado** comparando com a execução direta do código utilizando o comando `python main.py`, devido à inclusão de todas as bibliotecas necessárias para a execução do projeto. O tempo de execução do programa de saída pode variar consoante o sistema operativo e o computador utilizado.
+The execution time of the output program is **relatively higher** compared to direct code execution using the `python main.py` command, due to the inclusion of all necessary libraries to run the project. The execution time of the output program may vary depending on the operating system and the computer used.
 
-É altamente recomendável executar o projeto antes de o compilar para um executável, para garantir que tudo está a funcionar corretamente. Caso contrário, o executável pode não funcionar como esperado.
+It is highly recommended to run the project before compiling it to an executable, to ensure that everything is working correctly. Otherwise, the executable may not work as expected.
 
-## Licença
+## License
 
-MIT License. Veja o ficheiro [LICENSE](LICENSE) para mais detalhes.
+MIT License. See the [LICENSE](LICENSE) file for more details.
